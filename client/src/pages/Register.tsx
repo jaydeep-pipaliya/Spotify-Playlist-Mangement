@@ -35,7 +35,7 @@ const Register = () => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        await axios.post('http://localhost:5000/api/auth/register', values);
+        await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/auth/register`, values);
         alert('Registration successful!');
         navigate('/login');
       } catch (error) {

@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
       if (authContext?.user?.token) {
         setLoading(true);
         try {
-          const response = await axios.get<Playlist[]>('http://localhost:5000/api/playlists', {
+          const response = await axios.get<Playlist[]>(`${process.env.REACT_APP_BACKEND_URL}/api/playlists`, {
             headers: { Authorization: `Bearer ${authContext.user.token}` },
           });
           setPlaylists(response.data);
@@ -75,7 +75,7 @@ const Dashboard: React.FC = () => {
     if (authContext?.user?.token) {
       try {
         const response = await axios.post<Playlist>(
-          'http://localhost:5000/api/playlists',
+          `${process.env.REACT_APP_BACKEND_URL}/api/playlists`,
           newPlaylist,
           { headers: { Authorization: `Bearer ${authContext.user.token}` } }
         );
@@ -89,9 +89,10 @@ const Dashboard: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/songs/search', {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/songs/search`, {
         params: { query: searchQuery },
       });
+      
       setSearchResults(response.data);
     } catch (error) {
       console.error('Error searching for songs:', error);
@@ -102,7 +103,7 @@ const Dashboard: React.FC = () => {
   const handleDeletePlaylist = async (id: string) => {
     if (authContext?.user?.token) {
       try {
-        await axios.delete(`http://localhost:5000/api/playlists/${id}`, {
+        await axios.delete(`${process.env.REACT_APP_BACKEND_URL}/api/playlists/${id}`, {
           headers: { Authorization: `Bearer ${authContext.user.token}` },
         });
         setPlaylists(playlists.filter((playlist) => playlist._id !== id));
@@ -126,7 +127,7 @@ const Dashboard: React.FC = () => {
   const handleEditPlaylist = async (updatedPlaylist: SimplifiedPlaylist) => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/playlists/${updatedPlaylist._id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/playlists/${updatedPlaylist._id}`,
         updatedPlaylist,
         {
           headers: { Authorization: `Bearer ${authContext?.user?.token}` },
