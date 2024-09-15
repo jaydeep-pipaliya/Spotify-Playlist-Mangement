@@ -9,8 +9,7 @@
     "outDir": "./dist",
     "rootDir": "./",
     "moduleResolution": "node",
-    "typeRoots": ["./node_modules/@types"],  // Ensure type definitions are located
-    "types": ["node", "express", "bcryptjs", "jsonwebtoken"]
+    "typeRoots": ["./node_modules/@types"]
   },
   "include": ["./**/*.ts"],
   "exclude": ["node_modules"]
