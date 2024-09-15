@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES6",                          // Specify ECMAScript target version
-    "module": "commonjs",                     // Specify module code generation
-    "strict": true,                           // Enable all strict type-checking options
-    "esModuleInterop": true,                  // Enable compatibility with CommonJS
-    "forceConsistentCasingInFileNames": true, // Ensure consistent file casing
-    "skipLibCheck": true,                     // Skip type checking of declaration files
-    "outDir": "./dist",                       // Redirect output structure to the 'dist' directory
-    "rootDir": "./"                          // Specify the root directory of input files
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": "./",
+    "moduleResolution": "node",
+    "typeRoots": ["./node_modules/@types"],  // Ensure type definitions are located
+    "types": ["node", "express", "bcryptjs", "jsonwebtoken"]
   },
-  "include": ["./**/*.ts"],                   // Include all TypeScript files in the project
-  "exclude": ["node_modules"]                 // Exclude the 'node_modules' directory
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
 }
